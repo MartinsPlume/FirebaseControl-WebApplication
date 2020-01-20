@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
+import JuliFitLogo from '../services/DefaultValues'
 
 export class Home extends Component {
     
 
 render() {
     return (
-        <h1>This is home!</h1>
+        <img src={JuliFitLogo.JuliFitLogo} alt='Missing picture' />
     )
 }
 }

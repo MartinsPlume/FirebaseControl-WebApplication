@@ -4,7 +4,7 @@ import EditExercise from './ExerciseSwitchComponents/EditExercise';
 import ViewExercise from './ExerciseSwitchComponents/ViewExercise'
 import ImagePreview from './ImagePreview'
 
-const ExerciseSwitch = ({componentType,exercise,SendEditSaveDeleteHappened}) => {
+const ExerciseSwitch = ({componentType,exercise,SendEditSaveDeleteHappened,sendFetchData}) => {
 
     const [image,setImage] = React.useState({})
 
@@ -22,6 +22,7 @@ const ExerciseSwitch = ({componentType,exercise,SendEditSaveDeleteHappened}) => 
                     <NewExercise 
                     SendHandlePreview={HandleImagePreview}
                     SendCloseExerciseSwitch={SendEditSaveDeleteHappened}
+                    sendFetchData={sendFetchData}
                     />
                     <ImagePreview image={image}/>
                 </>
@@ -46,6 +47,7 @@ const ExerciseSwitch = ({componentType,exercise,SendEditSaveDeleteHappened}) => 
                     editExercise={exercise}
                     SendHandlePreview={HandleImagePreview}
                     SendCloseExerciseSwitch={SendEditSaveDeleteHappened}
+                    sendFetchData={sendFetchData}
                     />
                     <ImagePreview image={image}/>
                 </>

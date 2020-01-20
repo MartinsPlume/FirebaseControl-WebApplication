@@ -12,6 +12,7 @@ class EditExercise extends Component {
         this.state = props.editExercise || {
             title: "",
             type: "",
+            secondaryType:"",
             shortDescription:"",
             description:"",
             exerciseImage:""
@@ -22,6 +23,11 @@ class EditExercise extends Component {
     HandleSubmit = (e) =>
         {
             e.preventDefault()
+            console.log(this.image)
+            if(this.image == null){
+                FirestoreSetExercise(this.state)
+            }
+            else{
             ImageUploadToFirebase.uploadImageToFirebaseStorage(this.image)
                 .then(res => {
                     console.log(res.url)
@@ -33,7 +39,8 @@ class EditExercise extends Component {
                     })
                 .catch(err => console.error(err))
                 .finally(() => FirestoreSetExercise(this.state))
-            //this.props.SendCloseExerciseSwitch()
+            }
+            this.props.SendHandlePreview(null)
         }
 
     HandleChange = (e) =>
@@ -49,6 +56,11 @@ class EditExercise extends Component {
                     case 'ExerciseForm.ControlSelectType':
                     this.setState({
                         type:e.target.value
+                    })
+                break;
+                case 'ExerciseForm.ControlSelectsecondaryType':
+                    this.setState({
+                        secondaryType:e.target.value
                     })
                 break;
                 
@@ -101,6 +113,17 @@ class EditExercise extends Component {
                         <option>Shoulders</option>
                         <option>Arms</option>
                         <option>Core</option>
+                        <option>Other</option>
+                        </Form.Control>
+                    </Form.Group>
+                    <Form.Group controlId="ExerciseForm.ControlSelectSecondaryType">
+                        <Form.Label>Select Secondary Type</Form.Label>
+                        <Form.Control as="select"
+                        defaultValue={this.props.editExercise.type}
+                        onChange = {(e) => this.HandleChange(e)}
+                        >
+                        <option>Strength</option>
+                        <option>Stretch</option>
                         </Form.Control>
                     </Form.Group>
                     <Form.Group controlId="ExerciseForm.ControlShortDescription">
@@ -135,6 +158,11 @@ class EditExercise extends Component {
                         </Files>
                     </Form.Group>
                 </Form>
+                <Button onClick= {(e) => {
+                    this.props.SendCloseExerciseSwitch()
+                    this.props.sendFetchData()
+                    this.props.SendHandlePreview(null)
+                    }}>Close</Button>
             </div>
         )
     }

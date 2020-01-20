@@ -35,13 +35,13 @@ constructor(props) {
         key: 'exercises',
         link: '/exercises',
         component: Exercises
-      },
-      {
-        title: 'Trainings',
-        key: 'trainings',
-        link: '/trainings',
-        component: Trainings
       }
+      // {
+      //   title: 'Trainings',
+      //   key: 'trainings',
+      //   link: '/trainings',
+      //   component: Trainings
+      // }
     ]
   }
 }

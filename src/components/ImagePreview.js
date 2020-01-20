@@ -6,8 +6,8 @@ function ImagePreview({ image }) {
     return (
         <div>
             {image !== null && image.preview !== undefined
-                ? <img style={{width: '50vw'}} src={image.preview.url} />
-                : <img style={{width: '50vw'}} src={JuliFitLogo.JuliFitLogo}/>
+                ? <img style={{width: '25vw'}} src={image.preview.url} alt='Missing picture' />
+                : <img style={{width: '25vw'}} src={JuliFitLogo.JuliFitLogo} alt='Missing picture'/>
             }
         </div>
     )

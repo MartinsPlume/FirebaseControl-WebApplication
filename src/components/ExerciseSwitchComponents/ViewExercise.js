@@ -1,7 +1,8 @@
 import React from 'react'
 import Form from 'react-bootstrap/Form'
+import { Button } from 'react-bootstrap';
 
-const ViewExercise = ({viewExercise}) => {
+const ViewExercise = ({viewExercise, SendCloseExerciseSwitch}) => {
     console.log(viewExercise)
     return (
         <div>
@@ -38,6 +39,8 @@ const ViewExercise = ({viewExercise}) => {
                     ></Form.Control>
                 </Form.Group>
             </Form>
+
+            <Button onClick= {(e) => (SendCloseExerciseSwitch())}>Close</Button>
         </div>
     )
 }

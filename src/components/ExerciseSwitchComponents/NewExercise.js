@@ -12,6 +12,7 @@ class NewExercise extends Component {
         this.state = {
             title: "",
             type: "Back",
+            secondaryType:"Strength",
             shortDescription:"",
             description:"",
             exerciseImage:""
@@ -33,9 +34,7 @@ class NewExercise extends Component {
                 })
             .catch(err => console.error(err))
            .finally(() => FirestoreSetExercise(this.state))
-        
-        // close editing field
-        //this.props.SendCloseExerciseSwitch()
+           this.props.SendHandlePreview(null)
         }
         
     HandleChange(e) {
@@ -50,6 +49,12 @@ class NewExercise extends Component {
                 this.setState({
                     type:e.target.value
                 })
+                break;
+
+                case 'ExerciseForm.ControlSelectsecondaryType':
+                    this.setState({
+                        secondaryType:e.target.value
+                    })
                 break;
                 
                 case 'ExerciseNewForm.ControlShortDescription':
@@ -88,10 +93,10 @@ class NewExercise extends Component {
                         onChange = {(e) => this.HandleChange(e)}
                         />
                     </Form.Group>
+
                     <Form.Group controlId="ExerciseNewForm.ControlSelectType">
                         <Form.Label>Select Exercise Type</Form.Label>
                         <Form.Control as="select"
-                        value = 'Back'
                         onChange = {(e) => this.HandleChange(e)}
                         >
                         <option>Back</option>
@@ -100,8 +105,20 @@ class NewExercise extends Component {
                         <option>Shoulders</option>
                         <option>Arms</option>
                         <option>Core</option>
+                        <option>Other</option>
                         </Form.Control>
                     </Form.Group>
+
+                    <Form.Group controlId="ExerciseForm.ControlSelectSecondaryType">
+                        <Form.Label>Select Secondary Type</Form.Label>
+                        <Form.Control as="select"
+                        onChange = {(e) => this.HandleChange(e)}
+                        >
+                        <option>Strength</option>
+                        <option>Stretch</option>
+                        </Form.Control>
+                    </Form.Group>
+
                     <Form.Group controlId="ExerciseNewForm.ControlShortDescription">
                         <Form.Label>Short Description</Form.Label>
                         <Form.Control as="textarea" rows="2"
@@ -132,6 +149,12 @@ class NewExercise extends Component {
                         Save changes
                     </Button>
                 </Form>
+                <Button onClick= {(e) => {
+                    this.props.SendCloseExerciseSwitch()
+                    this.props.sendFetchData()
+                    this.props.SendHandlePreview(null)
+                }
+                }>Close</Button>
             </div>
         )
     }
