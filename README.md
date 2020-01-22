@@ -8,9 +8,9 @@ Project is meant to control Firebase:
 This is part of the project with Android Application:
 https://github.com/MartinsPlume/AndroidFirebaseApplication
 
-Project is for project of the year as the system for personal trainer.
+Project is for "Project of the year" for studies as the system for a personal trainer.
 
-FirebaseControl allows for the owner to create, edit and delete data that is displayed on Android application for users.
+FirebaseControl allows for the owner to create, edit and delete data that is displayed on Android application.
 
 **MPLU**
  
