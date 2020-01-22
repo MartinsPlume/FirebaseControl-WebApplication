@@ -1,4 +1,4 @@
-Firebase controller for Android app
+##Firebase controller for Android app##
 
 Project is meant to control Firebase:
  - create users for Authentication
