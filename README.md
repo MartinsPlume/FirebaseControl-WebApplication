@@ -1,4 +1,4 @@
-### Firebase controller for Android app
+### React Js Firebase controller
 
 Project is meant to control Firebase:
  - create users for Authentication
