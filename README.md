@@ -2,7 +2,7 @@
 
 Project is meant to control Firebase:
  - create users for Authentication
- - create data for Firestore
+ - CRUD for Firestore
  - upload images to Firebase storage
  
 This is part of the project with Android Application:
